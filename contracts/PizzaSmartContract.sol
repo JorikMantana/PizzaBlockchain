@@ -36,7 +36,7 @@ contract PizzaSmartContract
         string Name;
         string Description;
         string[] Ingredients;
-        int Price;
+        uint256 Price;
         int Rating;           
     }
     Pizza[] public pizzas;
@@ -52,7 +52,7 @@ contract PizzaSmartContract
 
     mapping (address => Roles) public roles;
 
-    function AddPizzaToProducts(string memory name, string memory description, string[] memory ingredients, int price, int rating) public OnlyManager
+    function AddPizzaToProducts(string memory name, string memory description, string[] memory ingredients, uint256 price, int rating) public OnlyManager
     {
         Pizza memory newPizza = Pizza(
         {
@@ -66,15 +66,19 @@ contract PizzaSmartContract
         pizzas.push(newPizza);
     }
 
-    function BuyPizzas(uint256[] memory pizzaIndices) public OnlyUser
+    function BuyPizzas(uint256[] memory pizzaIndices) public payable  OnlyUser
     {
         Pizza[] memory purchasedPizzas = new Pizza[](pizzaIndices.length);
+        uint256 price;
 
         for(uint256 i = 0; i < pizzaIndices.length; i++)
         {
             Pizza storage pizza = pizzas[pizzaIndices[i]];
+            price += pizza.Price;
             purchasedPizzas[i] = pizza;
         }
+
+        require(msg.value >= price, "Insufficient funds");
 
         Receipt memory newReceipt = Receipt(
             {
@@ -84,5 +88,10 @@ contract PizzaSmartContract
         );
 
         receipts.push(newReceipt);
+    }
+
+    function GetPizzas() public view returns (Pizza[] memory)
+    {
+        return pizzas;
     }
 }

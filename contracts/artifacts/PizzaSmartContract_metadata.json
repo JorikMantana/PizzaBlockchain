@@ -23,9 +23,9 @@
 						"type": "string[]"
 					},
 					{
-						"internalType": "int256",
+						"internalType": "uint256",
 						"name": "price",
-						"type": "int256"
+						"type": "uint256"
 					},
 					{
 						"internalType": "int256",
@@ -48,7 +48,47 @@
 				],
 				"name": "BuyPizzas",
 				"outputs": [],
-				"stateMutability": "nonpayable",
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "GetPizzas",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "Name",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "Description",
+								"type": "string"
+							},
+							{
+								"internalType": "string[]",
+								"name": "Ingredients",
+								"type": "string[]"
+							},
+							{
+								"internalType": "uint256",
+								"name": "Price",
+								"type": "uint256"
+							},
+							{
+								"internalType": "int256",
+								"name": "Rating",
+								"type": "int256"
+							}
+						],
+						"internalType": "struct PizzaSmartContract.Pizza[]",
+						"name": "",
+						"type": "tuple[]"
+					}
+				],
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
@@ -72,9 +112,9 @@
 						"type": "string"
 					},
 					{
-						"internalType": "int256",
+						"internalType": "uint256",
 						"name": "Price",
-						"type": "int256"
+						"type": "uint256"
 					},
 					{
 						"internalType": "int256",
@@ -152,11 +192,11 @@
 	},
 	"sources": {
 		"contracts/PizzaSmartContract.sol": {
-			"keccak256": "0x130d2673e4748f2ae0571768239ea35e8ec3fb147b437e58f82d554bd291793f",
+			"keccak256": "0x1694200ea34b0b15c0d0edb7acd9695758f7db6108b68664ab0066f8f573577a",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://1b65a2847afd329e123910759983e8065368e368b1b0da015bc4faa5a92e5627",
-				"dweb:/ipfs/Qmf4XZsv8ZnHaWzD4ycSqnLUSPznDjKQwT5o2iDpizthay"
+				"bzz-raw://313db0a23caa3fe329a65fd54f5378b184b89cb4c1b8175b82de53d9b541d099",
+				"dweb:/ipfs/QmeeBEzUhTvntKX1JKqAsovQNYt3uooznYBwXPZheKKmMp"
 			]
 		}
 	},
