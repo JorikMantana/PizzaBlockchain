@@ -1,0 +1,164 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "description",
+						"type": "string"
+					},
+					{
+						"internalType": "string[]",
+						"name": "ingredients",
+						"type": "string[]"
+					},
+					{
+						"internalType": "int256",
+						"name": "price",
+						"type": "int256"
+					},
+					{
+						"internalType": "int256",
+						"name": "rating",
+						"type": "int256"
+					}
+				],
+				"name": "AddPizzaToProducts",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256[]",
+						"name": "pizzaIndices",
+						"type": "uint256[]"
+					}
+				],
+				"name": "BuyPizzas",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "pizzas",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "Name",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "Description",
+						"type": "string"
+					},
+					{
+						"internalType": "int256",
+						"name": "Price",
+						"type": "int256"
+					},
+					{
+						"internalType": "int256",
+						"name": "Rating",
+						"type": "int256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "receipts",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "buyer",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "roles",
+				"outputs": [
+					{
+						"internalType": "enum PizzaSmartContract.Roles",
+						"name": "",
+						"type": "uint8"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/PizzaSmartContract.sol": "PizzaSmartContract"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/PizzaSmartContract.sol": {
+			"keccak256": "0x130d2673e4748f2ae0571768239ea35e8ec3fb147b437e58f82d554bd291793f",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://1b65a2847afd329e123910759983e8065368e368b1b0da015bc4faa5a92e5627",
+				"dweb:/ipfs/Qmf4XZsv8ZnHaWzD4ycSqnLUSPznDjKQwT5o2iDpizthay"
+			]
+		}
+	},
+	"version": 1
+}
