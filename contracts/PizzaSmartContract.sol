@@ -3,11 +3,25 @@ pragma solidity ^0.8.26;
 
 contract PizzaSmartContract
 {
+    address payable public owner;
+
+    constructor()
+    {
+        owner = payable(msg.sender);
+        roles[owner] = Roles.Manager;
+    }
+
     enum Roles
     {
         Admin,
         User,
         Manager
+    }
+
+    struct User
+    {
+        string Name;
+        string Password;
     }
 
     modifier OnlyManager()
@@ -44,13 +58,14 @@ contract PizzaSmartContract
     struct Receipt
     {
         address buyer;
-        uint256[] buyedPizzasIndexes;
+        string buyedPizzaName;
     }
 
     Receipt[] public receipts;
 
 
     mapping (address => Roles) public roles;
+    mapping (address => User) public users;
 
     function AddPizzaToProducts(string memory name, string memory description, string[] memory ingredients, uint256 price, int rating) public OnlyManager
     {
@@ -66,32 +81,47 @@ contract PizzaSmartContract
         pizzas.push(newPizza);
     }
 
-    function BuyPizzas(uint256[] memory pizzaIndices) public payable  OnlyUser
+    function BuyPizzas(uint256 pizzaId) public payable  OnlyUser
     {
-        Pizza[] memory purchasedPizzas = new Pizza[](pizzaIndices.length);
-        uint256 price;
-
-        for(uint256 i = 0; i < pizzaIndices.length; i++)
-        {
-            Pizza storage pizza = pizzas[pizzaIndices[i]];
-            price += pizza.Price;
-            purchasedPizzas[i] = pizza;
-        }
-
-        require(msg.value >= price, "Insufficient funds");
+        require(msg.value == pizzas[pizzaId].Price, "No money");
 
         Receipt memory newReceipt = Receipt(
-            {
-                buyer: msg.sender,
-                buyedPizzasIndexes: pizzaIndices
-            }
-        );
+        {
+            buyer: msg.sender,
+            buyedPizzaName: pizzas[pizzaId].Name
+        });
 
-        receipts.push(newReceipt);
+        // Pizza[] memory purchasedPizzas = new Pizza[](pizzaIndices.length);
+        // uint256 price;
+
+        // for(uint256 i = 0; i < pizzaIndices.length; i++)
+        // {
+        //     Pizza storage pizza = pizzas[pizzaIndices[i]];
+        //     price += pizza.Price;
+        //     purchasedPizzas[i] = pizza;
+        // }
+
+        // require(msg.value >= price, "Insufficient funds");
+
+        // Receipt memory newReceipt = Receipt(
+        //     {
+        //         buyer: msg.sender,
+        //         buyedPizzasIndexes: pizzaIndices
+        //     }
+        // );
+
+        // receipts.push(newReceipt);
     }
 
     function GetPizzas() public view returns (Pizza[] memory)
     {
         return pizzas;
+    }
+
+    function Registration(string memory name, string memory password) public
+    {
+        require(roles[msg.sender] != Roles.User, "You're user alreeady");
+        roles[msg.sender] = Roles.User;
+        users[msg.sender] = User(name, password);
     }
 }

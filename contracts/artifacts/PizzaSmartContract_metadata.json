@@ -6,6 +6,11 @@
 	"output": {
 		"abi": [
 			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "string",
@@ -41,9 +46,9 @@
 			{
 				"inputs": [
 					{
-						"internalType": "uint256[]",
-						"name": "pizzaIndices",
-						"type": "uint256[]"
+						"internalType": "uint256",
+						"name": "pizzaId",
+						"type": "uint256"
 					}
 				],
 				"name": "BuyPizzas",
@@ -86,6 +91,37 @@
 						"internalType": "struct PizzaSmartContract.Pizza[]",
 						"name": "",
 						"type": "tuple[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "password",
+						"type": "string"
+					}
+				],
+				"name": "Registration",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address payable",
+						"name": "",
+						"type": "address"
 					}
 				],
 				"stateMutability": "view",
@@ -139,6 +175,11 @@
 						"internalType": "address",
 						"name": "buyer",
 						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "buyedPizzaName",
+						"type": "string"
 					}
 				],
 				"stateMutability": "view",
@@ -158,6 +199,30 @@
 						"internalType": "enum PizzaSmartContract.Roles",
 						"name": "",
 						"type": "uint8"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "users",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "Name",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "Password",
+						"type": "string"
 					}
 				],
 				"stateMutability": "view",
@@ -192,11 +257,11 @@
 	},
 	"sources": {
 		"contracts/PizzaSmartContract.sol": {
-			"keccak256": "0x1694200ea34b0b15c0d0edb7acd9695758f7db6108b68664ab0066f8f573577a",
+			"keccak256": "0x63a81a782b00d6f7405183300fe84bfc92e2fdf9785faee8b6b8de5b3b42b011",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://313db0a23caa3fe329a65fd54f5378b184b89cb4c1b8175b82de53d9b541d099",
-				"dweb:/ipfs/QmeeBEzUhTvntKX1JKqAsovQNYt3uooznYBwXPZheKKmMp"
+				"bzz-raw://d1993eceaed374ce711aad3346c7569e86e19d84ae394c8af929363a76d14e24",
+				"dweb:/ipfs/Qmba5DVUUhrE28KGEtzLH5yzPhCXMsaRwgnLYp7TKg4td1"
 			]
 		}
 	},
